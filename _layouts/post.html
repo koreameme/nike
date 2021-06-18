@@ -155,7 +155,41 @@ toc_sticky: true
 <!-- Begin related posts
 ================================================== -->
 
-{% include related-posts.html %}
+{% assign commonTags = '' %}
+
+{% for tag in jekyll-themes.tags %}
+  {% if jekyll-themes.url != page.url %}
+    {% if page.tags contains tag %}
+      {% assign sameTagCount = sameTagCount | plus: 1 %}
+      {% capture tagmarkup %} {{ tag }} {% endcapture %}
+      {% assign commonTags = commonTags | append: tagmarkup %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% if sameTagCount >= minCommonTags %}
+  <div>
+  <h5>{{ jekyll-themes.title }}{{ commonTags }}</h5>
+  </div>
+  {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+  {% if maxRelatedCounter >= maxRelated %}
+    {% break %}
+  {% endif %}
+{% endif %}
+  
+{% if sameTagCount == 0 %}
+    {% if post.url != page.url %}
+        <h5>{{ post.title }}</h5>
+    {% endif %}
+    {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+  {% if maxRelatedCounter >= maxRelated %}
+    {% break %}
+  {% endif %}
+{% endif %}
+
+{% endfor %}
+</div>
+{% else %}
+{% endif %}
 
 <!-- End related posts
 ================================================== -->
