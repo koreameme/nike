@@ -32,7 +32,7 @@ plugins:
   - jekyll-archives
   # - jekyll-toc
   - classifier-reborn
-  - jekyll-tfidf-related-posts
+  - jekyll-related-posts
 
   # Archives
 jekyll-archives:
