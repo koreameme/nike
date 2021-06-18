@@ -1,11 +1,11 @@
 # Site
-name: "Top10shop - BEST제품 소개 블로그"
-title: "Top10shop"
+name: "Top10shop - NIKE제품 소개 블로그"
+title: "Top10shop - NIKE"
 description: "AI로 분석한 가장 BEST한 제품을 소개합니다. "
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /
-url: "https://gift.top10shop.net"
+url: "https://nike.top10shop.net"
 google_analytics: '270869033'
 disqus: 'demowebsite'
 # mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
@@ -19,7 +19,7 @@ authors:
     display_name: John
     gravatar: e56154546cf4be74e393c62d1ae9f9d4
     email: koreameme001@gmail.com
-    web: https://gift.top10shop.net
+    web: https://nike.top10shop.net
     # twitter: https://twitter.com/wowthemesnet
     description: "AI로 분석한 최고의 제품을 검색/엄선하여 추천하는 블로거 입니다."
 
