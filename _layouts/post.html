@@ -185,10 +185,12 @@ toc_sticky: true
                     <h5>{{ post.title }}</h5>    
                 </header>
                 <section>
+                  <center>
                 <a href="{{ site.baseurl }}{{ post.url }}">
                     <img width="320" height="200" src="{{ post.image }}" 
                     class="img-fluid" alt="{{ post.image }}" />
                 </a>
+                  </center>
                 </section>
                 <small>{{ matchingTags | join: ", " }}</small>
             </article>
