@@ -155,7 +155,6 @@ toc_sticky: true
 <!-- Begin related posts
 ================================================== -->
 
-{% assign posts = site.posts | where_exp:"post", "post.url != page.url" | sample:4 %}
 {% for post in posts %}
   {% include related-post.html %}
 {% endfor %}
