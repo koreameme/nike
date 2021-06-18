@@ -33,7 +33,6 @@ plugins:
   # - jekyll-toc
   - classifier-reborn
   - jekyll-related-posts
-  - jekyll-tagging-related_posts
   
   # Archives
 jekyll-archives:
