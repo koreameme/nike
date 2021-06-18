@@ -155,42 +155,58 @@ toc_sticky: true
 <!-- Begin related posts
 ================================================== -->
 
-<div class="relatedPosts">
+{% assign showRelatedPosts = 3 %}
 
-  <h4>You May Also Enjoy</h4>
-  
-  {% assign maxRelated = 4 %}
-  {% assign minCommonTags =  2 %}
-  {% assign maxRelatedCounter = 0 %}
-  
-  {% for post in site.posts %}
-  
-      {% assign sameTagCount = 0 %}
-      {% assign commonTags = '' %}
-  
-      {% for category in post.categories %}
+{% capture posts %} 
+    {% for post in site.posts %}
         {% if post.url != page.url %}
-          {% if page.categories contains category %}
-            {% assign sameTagCount = sameTagCount | plus: 1 %}
-            {% capture tagmarkup %} <span class="label label-default">{{ category }}</span> {% endcapture %}
-            {% assign commonTags = commonTags | append: tagmarkup %}
-          {% endif %}
+            {% assign matchingTags = "" | split: ","  %}
+    
+            {% for tag in post.tags %}
+                {% assign currentPostTag = tag | downcase %}
+                {% assign tagsPage = page.tags | downcase %}
+                {% if tagsPage contains currentPostTag %}
+                    {% assign matchingTags = matchingTags | push: currentPostTag %}    
+                {% endif %}
+            {% endfor %}
+            
+            {% assign tagsTotal = matchingTags.size %}
+    
+            {% if tagsTotal < 10 %}
+                {% assign tagsTotal = tagsTotal | prepend: "0" %}
+            {% else %}
+                {% assign tagsTotal = tagsTotal  %}
+            {% endif %}
+            
+            |
+            <article>
+                <strong>{{ tagsTotal }} tags</strong>
+                <header>    
+                    <h5>{{ post.title }}</h5>    
+                </header>
+                <section>
+                <a href="{{ site.baseurl }}{{ post.url }}">
+                    <img width="320" height="200" src="{{ post.image }}" 
+                    class="img-fluid" alt="{{ post.image }}" />
+                </a>
+                </section>
+                <small>{{ matchingTags | join: ", " }}</small>
+            </article>
+                
         {% endif %}
-      {% endfor %}
-  
-      {% if sameTagCount >= minCommonTags %}
-        <div>
-        <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
-        </div>
-        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-        {% if maxRelatedCounter >= maxRelated %}
-          {% break %}
-        {% endif %}
-      {% endif %}
-  
     {% endfor %}
-  
-  </div>
+{% endcapture %}
+
+{% assign relatedPosts = posts | split: '|' | sort | reverse %}
+
+<header>
+    <h4>You might also like:</h4>
+    <hr>
+</header>
+
+{% for i in (0..showRelatedPosts) %}
+    {{ relatedPosts[i] }}
+{% endfor %}
 
 <!-- End related posts
 ================================================== -->
