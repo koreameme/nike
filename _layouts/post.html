@@ -149,7 +149,7 @@ toc_sticky: true
                   <!-- 하단의 더보기의 링크는 자신의 사이트에 맞게 수정 -->
                   <b>{{ page.categories }} 카테고리의 다른 글</b>
                   <!-- <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}" class="more-button">더보기</a> -->
-                  <a href="/categories#{{ categories | replace: ' ', '-' }}" class="more-button">더보기</a>
+                  <a href="/categories#{{ post.categories | replace: ' ', '-' }}" class="more-button">더보기</a>
                 </div>
                 <table>
                   <tbody>
@@ -159,7 +159,7 @@ toc_sticky: true
                       <!-- 전체 포스트의 카테고리가 현재 들어와 있는 페이지의 카테고리와 같은지 판단-->
                       {% if post.categories == page.categories %}
                         {% assign count = count | plus: 1 %}
-                        <!-- 글의 목록을 최대 3개만 허용 -->
+                        <!-- 글의 목록을 최대 5개만 허용 -->
                         {% if count < 6 %}
                           <tr>
                             <!-- 각 포스트의 링크도 자신의 사이트에 맞게 수정 -->
