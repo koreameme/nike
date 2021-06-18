@@ -32,8 +32,9 @@ plugins:
   - jekyll-archives
   # - jekyll-toc
   - classifier-reborn
-    
-# Archives
+  - jekyll-tfidf-related-posts
+
+  # Archives
 jekyll-archives:
   enabled:
     - categories
